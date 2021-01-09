@@ -1,0 +1,38 @@
+import itertools
+
+d = {
+    'A': ['GCA', 'GCC', 'GCG', 'GCT'],
+    'C': ['TGC', 'TGT'],
+    'D': ['GAC', 'GAT'],
+    'E': ['GAA', 'GAG'],
+    'F': ['TTC', 'TTT'],
+    'G': ['GGA', 'GGC', 'GGG', 'GGT'],
+    'H': ['CAC', 'CAT'],
+    'I': ['ATA', 'ATC', 'ATT'],
+    'K': ['AAA', 'AAG'],
+    'L': ['CTA', 'CTC', 'CTG', 'CTT', 'TTA', 'TTG'],
+    'M': ['ATG'],
+    'N': ['AAC', 'AAT'],
+    'P': ['CCA', 'CCC', 'CCG', 'CCT'],
+    'Q': ['CAA', 'CAG'],
+    'R': ['AGA', 'AGG', 'CGA', 'CGC', 'CGG', 'CGT'],
+    'S': ['AGC', 'AGT', 'TCA', 'TCC', 'TCG', 'TCT'],
+    'T': ['ACA', 'ACC', 'ACG', 'ACT'],
+    'V': ['GTA', 'GTC', 'GTG', 'GTT'],
+    'W': ['TGG'],
+    'Y': ['TAC', 'TAT'],
+    '_': ['TAA', 'TAG', 'TGA'],
+}
+
+def generator(protein):
+    protien = 'MGNCNGASK'
+    l = [d[aa] for aa in protein]
+    for comb in itertools.product(*l):
+        yield "".join(comb)
+
+
+if __name__ == '__main__':
+    protein = 'MGNCNGASK'
+    g = generator(protein)
+    for dna_seq in g:
+        print(dna_seq)
